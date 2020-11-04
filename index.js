@@ -7,9 +7,17 @@ $('#js-shopping-list-form').submit(function(e){
 
 function itemChecked() {
     $('.shopping-list').on('click', '.shopping-item-toggle', function(event) {
-        const targetItem = $(this).parent().parent().parent().find('.shopping-item');
+        const targetItem = $(this).closest('li').find('.shopping-item');
         targetItem.toggleClass('shopping-item__checked')
     });
 }
 
 $(itemChecked);
+
+function itemDeleted() {
+    $('.shopping-list').on('click', '.shopping-item-delete', function(event) {
+        this.closest('li').remove();
+    });
+}
+
+$(itemDeleted);
